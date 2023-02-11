@@ -11,9 +11,9 @@ sleep 2
 
 # Check if dnstwist is installed
 if ! command -v dnstwist > /dev/null 2>&1; then
-    echo "Error: dnstwist tool is not installed."
-    echo "Please install dnstwist before proceeding"
-    echo "sudo apt install dnstwist"
+    echo "[!] Error: dnstwist tool is not installed."
+    echo "[!] Please install dnstwist before proceeding"
+    echo "[-] sudo apt install dnstwist"
     exit 1
 fi
 
