@@ -9,12 +9,22 @@ echo "        \/\/          \/     \/             \/    |__|          \/        
 
 sleep 2
 
-echo
+# Check if dnstwist is installed
+if ! command -v dnstwist > /dev/null 2>&1; then
+    echo "Error: dnstwist tool is not installed."
+    echo "Please install dnstwist before proceeding"
+    echo "sudo apt install dnstwist"
+    exit 1
+fi
+
+# Read the domains.txt file
+echo 
 echo "[*] Reading domains.txt"
 domains=domains.txt
-echo "[!] Starting cybersquatting domain enumeration"
 echo 
 
+# Begin enumerating the domains and output to separate csv files
+echo "[!] Starting cybersquatting domain enumeration"
 for i in `cat $domains`
 do
 echo "[*] Enumerating $i, please wait..."
@@ -24,5 +34,6 @@ echo "[*] Please see __"$i"__.csv for more detail"
 echo
 done
 
+# finish
 echo "[!] Cybersquatting domain enumeration complete!"
 echo "[*] Exiting" 
