@@ -48,6 +48,7 @@ DOMAINS=($(<domains.txt))
 
 # Begin enumerating the domains and output to separate csv files
 echo "[!] Starting cybersquatting domain enumeration"
+echo
 for domain in "${DOMAINS[@]}"; do
   echo "[*] Enumerating "$domain", please wait..." 
   dnstwist -rmg "$domain" --format csv | column -t > __"$domain"__.csv
