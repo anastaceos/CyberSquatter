@@ -1,58 +1,61 @@
 #!/bin/bash
 
-printf "_________        ___.                 _________                    __    __                 \n"
-printf "\_   ___ \___.__.\_ |__   ___________/   _____/ ________ _______ _/  |__/  |_  ___________  \n"
-printf "/    \  \<   |  | | __ \_/ __ \_  __ \_____  \ / ____/  |  \__  \\   __\   __\/ __ \_  __ \ \n"
-printf "\     \___\___  | | \_\ \  ___/|  | \/        < <_|  |  |  // __ \|  |  |  | \  ___/|  | \/ \n"
-printf " \______  / ____| |___  /\___  >__| /_______  /\__   |____/(____  /__|  |__|  \___  >__|    \n"
-printf "        \/\/          \/     \/             \/    |__|          \/                \/        \n"
-printf "CyberSquatter can detect typosquatters, phishing attacks, fraud, and brand impersonation.\n"
-printf "Useful as an additional source of targeted threat intelligence.\n"
-printf "CyberSquatter makes use of the dnstwist tool.\n\n"
+echo "_________        ___.                 _________                    __    __                 "
+echo "\_   ___ \___.__.\_ |__   ___________/   _____/ ________ _______ _/  |__/  |_  ___________  "
+echo "/    \  \<   |  | | __ \_/ __ \_  __ \_____  \ / ____/  |  \__  \\   __\   __\/ __ \_  __ \ "
+echo "\     \___\___  | | \_\ \  ___/|  | \/        < <_|  |  |  // __ \|  |  |  | \  ___/|  | \/ "
+echo " \______  / ____| |___  /\___  >__| /_______  /\__   |____/(____  /__|  |__|  \___  >__|    "
+echo "        \/\/          \/     \/             \/    |__|          \/                \/        "
+echo "CyberSquatter can detect typosquatters, phishing attacks, fraud, and brand impersonation."
+echo "Useful as an additional source of targeted threat intelligence."
+echo "CyberSquatter makes use of the dnstwist tool."
+echo
 
 sleep 2
 
-printf "[*] Checking if dnstwist is installed\n"
+echo "[*] Checking if dnstwist is installed"
 # Check if dnstwist is installed
 if ! command -v dnstwist > /dev/null 2>&1; then
-    printf "[!] Error: The dnstwist tool is not installed.\n"
-    printf "[!] The dnstwist tool is necessary for this script to perform cybersquatting domain enumeration.\n"
-    printf "[-] Please install dnstwist by running: sudo apt install dnstwist\n"
+    echo "[!] Error: The dnstwist tool is not installed."
+    echo "[!] The dnstwist tool is necessary for this script to perform cybersquatting domain enumeration."
+    echo "[-] Please install dnstwist by running: sudo apt install dnstwist"
+    echo
     exit 1
 else
-    printf "[*] dnstwist is installed\n\n"
+    echo "[*] dnstwist is installed"
+    echo
 fi
 
-printf "[*] Checking for domains.txt\n"
 # Check if domains.txt exists
-if [ ! -f domains.txt ]; then
-    printf "[!] Error: domains.txt not found\n"
+echo "[*] Checking for domains.txt"
+if [ -f domains.txt ]; then
+  echo "[*] domains.txt found"
+  if [ -s domains.txt ]; then
+    echo "[*] domains.txt contains data"
+  else
+    echo "[!] Error: domains.txt is empty"
     exit 1
+  fi
 else  
-    printf "[*] domains.txt found\n"
-fi
-
-# Check if domains.txt contains data
-if [ ! -s domains.txt ]; then
-    printf "[!] Error: domains.txt is empty\n"
-    exit 1
-else
-    printf "[*] domains.txt contains data\n"
+  echo "[!] Error: domains.txt not found"
+  exit 1
 fi
 
 # Read the domains.txt file
-printf "[*] Reading domains.txt\n\n"
-domains=($(<domains.txt))
+echo "[*] Reading domains.txt"
+echo
+DOMAINS=($(<domains.txt))
 
 # Begin enumerating the domains and output to separate csv files
-printf "[!] Starting cybersquatting domain enumeration\n"
-for i in "${domains[@]}"; do
-  printf "[*] Enumerating %s, please wait...\n" "$i"
-  dnstwist -rmg "$i" --format csv | column -t > __"$i"__.csv
-  printf "[!] %s enumeration complete!\n" "$i"
-  printf "[*] Please see __%s__.csv for more detail\n\n" "$i"
+echo "[!] Starting cybersquatting domain enumeration"
+for domain in "${DOMAINS[@]}"; do
+  echo "[*] Enumerating "$domain", please wait..." 
+  dnstwist -rmg "$domain" --format csv | column -t > __"$domain"__.csv
+  echo "[!] "$domain" enumeration complete!" 
+  echo "[*] Please see __"$domain"__.csv for more detail" 
+  echo
 done
 
 # finish
-printf "[!] Cybersquatting domain enumeration complete!\n"
-printf "[*] Exiting\n"
+echo "[!] Cybersquatting domain enumeration complete!"
+echo "[*] Exiting"
