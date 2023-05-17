@@ -13,25 +13,25 @@ echo
 
 sleep 2
 
-echo "[*] Checking if dnstwist is installed"
+echo "[>] Checking if dnstwist is installed"
 # Check if dnstwist is installed
 if ! command -v dnstwist > /dev/null 2>&1; then
     echo "[!] Error: The dnstwist tool is not installed."
     echo "[!] The dnstwist tool is necessary for this script to perform cybersquatting domain enumeration."
-    echo "[-] Please install dnstwist by running: sudo apt install dnstwist"
+    echo "[!] Please install dnstwist by running: sudo apt install dnstwist"
     echo
     exit 1
 else
-    echo "[*] dnstwist is installed"
+    echo "[>] dnstwist is installed"
     echo
 fi
 
 # Check if domains.txt exists
-echo "[*] Checking for domains.txt"
+echo "[>] Checking for domains.txt"
 if [ -f domains.txt ]; then
-  echo "[*] domains.txt found"
+  echo "[>] domains.txt found"
   if [ -s domains.txt ]; then
-    echo "[*] domains.txt contains data"
+    echo "[>] domains.txt contains data"
   else
     echo "[!] Error: domains.txt is empty"
     exit 1
@@ -42,7 +42,7 @@ else
 fi
 
 # Read the domains.txt file
-echo "[*] Reading domains.txt"
+echo "[>] Reading domains.txt"
 echo
 DOMAINS=($(<domains.txt))
 
@@ -50,13 +50,13 @@ DOMAINS=($(<domains.txt))
 echo "[!] Starting cybersquatting domain enumeration"
 echo
 for domain in "${DOMAINS[@]}"; do
-  echo "[*] Enumerating "$domain", please wait..." 
-  dnstwist -rmg "$domain" --format csv | column -t > __"$domain"__.csv
-  echo "[!] "$domain" enumeration complete!" 
-  echo "[*] Please see __"$domain"__.csv for more detail" 
+  echo "[>] Enumerating "$domain", please wait..." 
+  dnstwist -rmg "$domain" --format csv | column -t > "$domain"-scan.csv
+  echo "[>] "$domain" enumeration complete!" 
+  echo "[>] Please see "$domain"-scan.csv for more detail" 
   echo
 done
 
 # finish
-echo "[!] Cybersquatting domain enumeration complete!"
-echo "[*] Exiting"
+echo "[>] Cybersquatting domain enumeration complete!"
+echo "[>] Exiting"
