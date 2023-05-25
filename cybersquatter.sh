@@ -50,10 +50,10 @@ DOMAINS=($(<domains.txt))
 echo "[!] Starting cybersquatting domain enumeration"
 echo
 for domain in "${DOMAINS[@]}"; do
-  echo "[>] Enumerating "$domain", please wait..." 
-  dnstwist -rmg "$domain" --format csv | column -t > "$domain"-scan.csv
-  echo "[>] "$domain" enumeration complete!" 
-  echo "[>] Please see "$domain"-scan.csv for more detail" 
+  echo "[+] Checking "$domain", please wait..." 
+  dnstwist -rmg "$domain" --format csv | column -t > "$domain"-results.csv
+  echo "[!] "$domain" enumeration complete!" 
+  echo "[>] Please see "$domain"-results.csv for more detail" 
   echo
 done
 
