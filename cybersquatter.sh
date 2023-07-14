@@ -9,6 +9,7 @@ echo "        \/\/          \/     \/             \/    |__|          \/        
 echo "CyberSquatter can detect typosquatters, phishing attacks, fraud, and brand impersonation."
 echo "Useful as an additional source of targeted threat intelligence."
 echo "CyberSquatter makes use of the dnstwist tool."
+echo "Written by Stacy Christakos"
 echo
 
 sleep 2
@@ -59,4 +60,9 @@ done
 
 # finish
 echo "[>] Cybersquatting domain enumeration complete!"
+
+echo "[>] Starting filtering of cybersquatting domain enumeration results"
+./remove_whitespaces.sh
+echo "[>] Filtering complete"
+
 echo "[>] Exiting"
