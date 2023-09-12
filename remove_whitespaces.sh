@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Specify the directory containing the CSV files
-directory="CyberSquatter"
+#directory="CyberSquatter"
 
 # Iterate through each CSV file in the directory
-for file in "$directory"/*.csv; do
+#for file in "$directory"/*.csv; do
+for file in *.csv; do
   # Create a temporary file for the modified content
   temp_file=$(mktemp)
 
@@ -20,8 +21,9 @@ for file in "$directory"/*.csv; do
   # Replace the original file with the modified content
   mv "$temp_file" "$file"
 
-  echo "Processed: $file"
+  echo "[!] Processed: $file"
 done
 
-echo "Finished processing all CSV files."
+echo
+echo "[>] Finished processing all CSV files."
 
