@@ -53,8 +53,8 @@ echo
 for domain in "${DOMAINS[@]}"; do
   echo "[+] Checking "$domain", please wait..." 
   dnstwist -rmg "$domain" --format csv | column -t > "$domain".csv
-  echo "[+] Filtering domain enumeration results for "$domain""
-  ./remove_whitespaces.sh
+  echo "[+] Filtering domain enumeration results for "$domain".csv"
+  ./remove_whitespaces_from_results.sh $domain.csv
   echo "[!] "$domain" enumeration complete!" 
   echo "[>] Please see "$domain".csv for more detail" 
   echo
@@ -62,9 +62,4 @@ done
 
 # finish
 echo "[>] Cybersquatting domain enumeration complete!"
-#echo
-#echo "[>] Filtering the domain enumeration results"
-#./remove_whitespaces.sh
-#echo
-#echo "[>] Filtering complete"
 echo "[>] Exiting"
