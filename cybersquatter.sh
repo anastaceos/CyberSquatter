@@ -9,7 +9,7 @@ echo "        \/\/          \/     \/             \/    |__|          \/        
 echo "CyberSquatter can detect typosquatters, phishing attacks, fraud, and brand impersonation."
 echo "Useful as an additional source of targeted threat intelligence."
 echo "CyberSquatter makes use of the dnstwist tool."
-echo "Written by Stacy Christakos"
+echo "Developed by Stacy Christakos"
 echo
 
 sleep 2
@@ -52,9 +52,10 @@ echo "[!] Starting cybersquatting domain enumeration"
 echo
 for domain in "${DOMAINS[@]}"; do
   echo "[+] Checking "$domain", please wait..." 
-  dnstwist -rmg "$domain" --format csv | column -t > "$domain".csv
-  echo "[+] Filtering domain enumeration results for "$domain".csv"
-  ./remove_whitespaces_from_results.sh $domain.csv
+# dnstwist -rmg "$domain" --format csv | column -t > "$domain".csv
+  dnstwist -rmg "$domain" --format csv | sed 's/ *, */,/g' > "$domain".csv
+  #echo "[+] Filtering domain enumeration results for "$domain".csv"
+  #./remove_whitespaces_from_results.sh $domain.csv
   echo "[!] "$domain" enumeration complete!" 
   echo "[>] Please see "$domain".csv for more detail" 
   echo
