@@ -61,6 +61,29 @@ for domain in "${DOMAINS[@]}"; do
   echo
 done
 
+# Define the output directory with the current date
+output_dir="archived_results/$(date +%Y-%m-%d)"
+
+# Function to archive and clean up CSV files
+archive_csv_files() {
+  echo "[>] Archiving CSV files..."
+  # Check if the output directory already exists
+  if [ ! -d "$output_dir" ]; then
+    echo "[!] Output directory does not exist. Creating now..."
+    mkdir -p "$output_dir"
+  else
+    echo "[!] Output directory already exists."
+  fi
+  # Move all CSV files to the output directory
+  mv *.csv "$output_dir"
+  echo "[>] CSV files archived in directory: $output_dir"
+}
+
+# execute csv archiving
+echo "[>] Executing csv cleanup and archiving"
+archive_csv_files
+echo
+
 # finish
 echo "[>] Cybersquatting domain enumeration complete!"
 echo "[>] Exiting"
