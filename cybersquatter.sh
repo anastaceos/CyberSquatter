@@ -53,7 +53,7 @@ echo
 for domain in "${DOMAINS[@]}"; do
   echo "[+] Checking "$domain", please wait..." 
 # dnstwist -rmg "$domain" --format csv | column -t > "$domain".csv
-  dnstwist -rmg "$domain" --format csv | sed 's/ *, */,/g' > "$domain".csv
+  dnstwist -rmg "$domain" --tld tld.txt --format csv | sed 's/ *, */,/g' > "$domain".csv
   #echo "[+] Filtering domain enumeration results for "$domain".csv"
   #./remove_whitespaces_from_results.sh $domain.csv
   echo "[!] "$domain" enumeration complete!" 
