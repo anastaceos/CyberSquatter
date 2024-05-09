@@ -95,7 +95,7 @@ archive_csv_files() {
 }
 
 # execute csv archiving
-echo "[>] Executing csv cleanup and archiving"
+echo "[>] Executing CSV archiving"
 archive_csv_files
 echo
 
