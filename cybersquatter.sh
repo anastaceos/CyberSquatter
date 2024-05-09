@@ -42,8 +42,23 @@ else
   exit 1
 fi
 
+# Check if tld.txt exists
+echo "[>] Checking for tld.txt"
+if [ -f tld.txt ]; then
+  echo "[>] tld.txt found"
+  if [ -s tld.txt ]; then
+    echo "[>] tld.txt contains data"
+  else
+    echo "[!] Error: tld.txt is empty"
+    exit 1
+  fi
+else  
+  echo "[!] Error: tld.txt not found"
+  exit 1
+fi
+
 # Read the domains.txt file
-echo "[>] Reading domains.txt"
+echo "[>] Reading domains.txt and tld.txt"
 echo
 DOMAINS=($(<domains.txt))
 
