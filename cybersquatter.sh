@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# CyberSquatter Enhanced
+# CyberSquatter
 # By Stacy Christakos
 #
 # This script automates dnstwist checks against a list of domains,
