@@ -7,9 +7,13 @@ How the Script Works:
 Command-Line Arguments:
 
 -d, --domains <file>: Provide a custom path to your domain list. Defaults to domains.txt.
+
 -t, --tld <file>: Provide a path to an optional TLD file. Defaults to tld.txt.
+
 -o, --output <dir>: Provide a custom directory for archived results. Defaults to archived_results.
+
 -c, --concurrency <number>: Number of parallel jobs. Defaults to 4.
+
 -h, --help: Displays usage info.
 
 Pre-Flight Checks:
