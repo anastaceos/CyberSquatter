@@ -10,7 +10,7 @@ Command-Line Arguments:
 
 -t, --tld <file>: Provide a path to an optional TLD file. Defaults to tld.txt.
 
--o, --output <dir>: Provide a custom directory for archived results. Defaults to archived_results.
+-o, --output <dir>:  Provide a custom directory for archived results. Defaults to archived_results.
 
 -c, --concurrency <number>: Number of parallel jobs. Defaults to 4.
 
