@@ -200,15 +200,15 @@ You might feed this data into security tools or SIEM solutions to block suspicio
 
 ## 9. Troubleshooting
 
-dnstwist not found
+*dnstwist not found*
     
 Make sure you’ve installed it (sudo apt install dnstwist).
 
-Domains file not found or empty
+*Domains file not found or empty*
 
 Double-check your -d parameter and that the file actually contains domain lines.
 
-CSV not generated
+*CSV not generated*
 
 If dnstwist fails or network issues arise, you might get empty CSV files or errors in your terminal.
 
