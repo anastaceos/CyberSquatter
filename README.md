@@ -8,7 +8,7 @@ Below is a step-by-step guide on how to use the Domain Sentinel tool (the Bash s
 
 # Domain Sentinel: A How-To Guide
 
-##1. Overview
+## 1. Overview
 
 Domain Sentinel is a bash script that leverages the dnstwist tool to:
 
@@ -18,7 +18,7 @@ Domain Sentinel is a bash script that leverages the dnstwist tool to:
 - Archive all results (in CSV format) into a dated folder for easy reference.
 - You can choose between serial enumeration (one domain at a time) or parallel enumeration (multiple domains simultaneously). Parallel runs are faster if you have many domains and enough CPU/network capacity.
 
-##2. Prerequisites
+## 2. Prerequisites
 
 Operating System: Typically, a Linux environment. The script should also work on macOS with brew-installed tools, but it’s primarily designed for Linux.
 
@@ -29,7 +29,7 @@ Bash: Make sure your system has a Bash shell (/bin/bash).
 
 xargs (for parallel mode): Most Linux systems include xargs by default (part of findutils).
 
-##3. Getting the script
+## 3. Getting the script
 
 Save the script ds.sh (or any name you prefer).
 
@@ -40,9 +40,9 @@ chmod +x ds.sh
 ```
 Place it anywhere on your system. You can run it from its current directory or put it in your $PATH (e.g., /usr/local/bin).
 
-##4. Preparing Input Files
+## 4. Preparing Input Files
  
-The Domains File
+### The Domains File
 
 Create a text file containing each target domain on a new line.
 
@@ -54,7 +54,7 @@ company.org
 
 You can name this file anything you want, specify it with -d <filename> when running the script.
 
-The TLD File (Optional)
+### The TLD File (Optional)
 
 If you want to expand each domain to additional TLDs, create a file listing TLDs you want tested. For example:
 
@@ -71,7 +71,7 @@ If TLD mode is on, it enumerates expansions like example.org, example.io, etc., 
 
 If you omit this file or leave it empty, no extra expansions are generated.
 
-##5. Script Usage
+## 5. Script Usage
 
 The script supports command-line options to specify files, mode, and concurrency. Run:
 
@@ -96,23 +96,23 @@ OPTIONS:
   
   -h, --help                    Show this help message and exit
 ```
-###Required Options?
+### Required Options?
 
 At a minimum, you need a domains file with at least one domain in it. By default, the script will look for domains.txt. If your file has a different name, pass -d <filename>.
 TLD file is optional; if present and non-empty, it will create domain expansions.
 
-###Mode: Serial vs. Parallel
+### Mode: Serial vs. Parallel
 
 Serial (-m serial): Processes each domain one at a time. Slower, but simpler.
 Parallel (-m parallel): Runs multiple dnstwist processes at once, controlled by --concurrency.
 
-###Concurrency
+### Concurrency
 
 Only matters if you use parallel mode. Determines how many domains are processed simultaneously. A value of 2 or 4 is common.
 
-##6. Example Commands
+## 6. Example Commands
 
-###Basic: Just a Domains File (Serial)
+### Basic: Just a Domains File (Serial)
 
 ```
 ./ds.sh -d domains.txt
@@ -121,7 +121,7 @@ Only matters if you use parallel mode. Determines how many domains are processed
 Reads domains.txt, enumerates them one by one.
 No TLD expansions occur since -t wasn’t specified.
 
-###Parallel Mode
+### Parallel Mode
 
 ```
 ./ds.sh -d domains.txt -m parallel -c 4
@@ -130,7 +130,7 @@ No TLD expansions occur since -t wasn’t specified.
 Still no TLD expansions if no -t file.
 Runs 4 processes in parallel.
 
-###Domains + TLD Expansions
+### Domains + TLD Expansions
 
 ```
 ./ds.sh -d domains.txt -t custom_tlds.txt
@@ -139,7 +139,7 @@ Runs 4 processes in parallel.
 Serial (default) mode with expansions for each domain.
 If custom_tlds.txt is present and non-empty, the script enumerates each domain plus each domain + TLD combination.
 
-###Specify a Different Output Directory
+### Specify a Different Output Directory
 
 ```
 ./ds.sh -d domains.txt -o /home/user/dns_results
@@ -147,9 +147,9 @@ If custom_tlds.txt is present and non-empty, the script enumerates each domain p
 
 Saves all CSV files under /home/user/dns_results/YYYY-MM-DD/.
 
-##7. Output and Interpretation
+## 7. Output and Interpretation
 
-###Generated CSV Files
+### Generated CSV Files
 
 For each domain scanned by dnstwist, a CSV file is produced. For example, if you have example.com, you’ll see:
 example.com.csv
@@ -163,7 +163,7 @@ DNS AAAA: IPv6 addresses.
 MX, NS, etc.: DNS records.
 Banner: Additional info if dnstwist does HTTP or SMTP checks.
 
-###Archive Directory
+### Archive Directory
 
 All CSVs are moved into a dated folder, for example:
 ```
@@ -174,31 +174,31 @@ archived_results/2025-01-31/
 ```
 This ensures you can easily keep and revisit historical scans. If you run the script multiple times in one day, each run’s CSV files will go into the same daily folder (unless you rename the folder or run the script on different days).
 
-##8. Tips & Best Practices
+## 8. Tips & Best Practices
 
-###Check DNS and Network
+### Check DNS and Network
 
 If your system has DNS or connectivity issues, dnstwist may fail to resolve domains accurately.
 Make sure you’re online and have the necessary DNS access.
 
-###Use Parallel Wisely
+### Use Parallel Wisely
 
 If you have an extensive domain list, parallelization is helpful.
 However, if your network or DNS resolvers can’t handle many simultaneous queries, you could experience slower or unreliable results.
 
-###Clean TLD List
+### Clean TLD List
 
 Avoid “unrelated” TLDs or duplicates in tld.txt. The script systematically combines them with your root domain, which can clutter results.
 
-###Interpretation
+### Interpretation
 
 A dnstwist CSV output showing an existing domain that’s suspiciously similar to yours could be a sign of phishing or typosquatting. Investigate further!
 
-###Combine with Other Tools
+### Combine with Other Tools
 
 You might feed this data into security tools or SIEM solutions to block suspicious domains or gather threat intelligence.
 
-##9. Troubleshooting
+## 9. Troubleshooting
 
 dnstwist not found
     
