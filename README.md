@@ -212,7 +212,7 @@ CSV not generated
 
 If dnstwist fails or network issues arise, you might get empty CSV files or errors in your terminal.
 
-10. Conclusion
+## 10. Conclusion
 
 Domain Sentinel is a straightforward yet powerful script for discovering potential domain impersonations and typosquatters. By leveraging dnstwist, it scans each domain you provide, optionally expanding them with a TLD list. Depending on your needs, you can run it serially (safer for small domain sets) or in parallel (faster for large lists).
 
