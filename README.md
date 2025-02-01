@@ -1,5 +1,5 @@
 # Domain Sentinel
-dnstwist phishing domain scanner is a great tool to detect phishing, and fraudulent domains but can be tedious when trying to scan more than 1 domain at a time.
+dnstwist phishing domain scanner is a great tool to detect phishing, and fraudulent domains but can be tedious when trying to scan more than a single domain at a time.
 Domain Sentinel is a tool that automates domain enumeration with dnswist to detect typosquatting, phishing, and fraudulent sites with a simple shell script.
 
 More info regarding dnstwist can be found here: https://github.com/elceef/dnstwist
@@ -41,7 +41,7 @@ Place it anywhere on your system. You can run it from its current directory or p
 
 4. Preparing Input Files
  
-4.1 The Domains File
+The Domains File
 
 Create a text file containing each target domain on a new line.
     ```
@@ -52,7 +52,8 @@ Create a text file containing each target domain on a new line.
 
 You can name this file anything you want, specify it with -d <filename> when running the script.
 
-4.2 The TLD File (Optional)
+The TLD File (Optional)
+
 If you want to expand each domain to additional TLDs, create a file listing TLDs you want tested. For example:
  ```
 net
@@ -88,17 +89,17 @@ OPTIONS:
   
   -h, --help                    Show this help message and exit
 ```
-5.1 Required Options?
+Required Options?
 
 At a minimum, you need a domains file with at least one domain in it. By default, the script will look for domains.txt. If your file has a different name, pass -d <filename>.
 TLD file is optional; if present and non-empty, it will create domain expansions.
 
-5.2 Mode: Serial vs. Parallel
+Mode: Serial vs. Parallel
 
 Serial (-m serial): Processes each domain one at a time. Slower, but simpler.
 Parallel (-m parallel): Runs multiple dnstwist processes at once, controlled by --concurrency.
 
-5.3 Concurrency
+Concurrency
 
 Only matters if you use parallel mode. Determines how many domains are processed simultaneously. A value of 2 or 4 is common.
 
@@ -141,7 +142,7 @@ Saves all CSV files under /home/user/dns_results/YYYY-MM-DD/.
 
 7. Output and Interpretation
 
-7.1 Generated CSV Files
+Generated CSV Files
 
 For each domain scanned by dnstwist, a CSV file is produced. For example, if you have example.com, you’ll see:
 example.com.csv
@@ -155,7 +156,7 @@ DNS AAAA: IPv6 addresses.
 MX, NS, etc.: DNS records.
 Banner: Additional info if dnstwist does HTTP or SMTP checks.
 
-7.2 Archive Directory
+Archive Directory
 
 All CSVs are moved into a dated folder, for example:
 ```
@@ -168,39 +169,39 @@ This ensures you can easily keep and revisit historical scans. If you run the sc
 
 8. Tips & Best Practices
 
-8.1 Check DNS and Network
+Check DNS and Network
 
 If your system has DNS or connectivity issues, dnstwist may fail to resolve domains accurately.
 Make sure you’re online and have the necessary DNS access.
 
-8.2 Use Parallel Wisely
+Use Parallel Wisely
 
 If you have an extensive domain list, parallelization is helpful.
 However, if your network or DNS resolvers can’t handle many simultaneous queries, you could experience slower or unreliable results.
 
-8.3 Clean TLD List
+Clean TLD List
 
 Avoid “unrelated” TLDs or duplicates in tld.txt. The script systematically combines them with your root domain, which can clutter results.
 
-8.4 Interpretation
+Interpretation
 
 A dnstwist CSV output showing an existing domain that’s suspiciously similar to yours could be a sign of phishing or typosquatting. Investigate further!
 
-8.5 Combine with Other Tools
+Combine with Other Tools
 
 You might feed this data into security tools or SIEM solutions to block suspicious domains or gather threat intelligence.
 
 9. Troubleshooting
 
-9.1 dnstwist not found
+dnstwist not found
     
 Make sure you’ve installed it (sudo apt install dnstwist).
 
-9.2 Domains file not found or empty
+Domains file not found or empty
 
 Double-check your -d parameter and that the file actually contains domain lines.
 
-9.3 CSV not generated
+CSV not generated
 
 If dnstwist fails or network issues arise, you might get empty CSV files or errors in your terminal.
 
