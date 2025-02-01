@@ -35,9 +35,9 @@ Save the script ds.sh (or any name you prefer).
 
 Make it Executable:
 
-```
+
 chmod +x ds.sh
-```
+
 Place it anywhere on your system. You can run it from its current directory or put it in your $PATH (e.g., /usr/local/bin).
 
 4. Preparing Input Files
@@ -46,12 +46,12 @@ Place it anywhere on your system. You can run it from its current directory or p
 
     Create a text file containing each target domain on a new line.
 
-    ```
+    
     example.com
     example.net
     company.org
     ...
-    ```
+    
 
     You can name this file anything you want, specify it with -d <filename> when running the script.
 
@@ -59,13 +59,13 @@ Place it anywhere on your system. You can run it from its current directory or p
 
     If you want to expand each domain to additional TLDs, create a file listing TLDs you want tested. For example:
 
-    ```
+    
     net
     org
     io
     co
     ...
-    ```
+    
 
     For each base domain (e.g. example.com), the script creates a new CSV named <base_domain>.csv.
     Runs dnstwist on the base domain, appending its findings to <base_domain>.csv.
@@ -77,9 +77,9 @@ Place it anywhere on your system. You can run it from its current directory or p
 
 The script supports command-line options to specify files, mode, and concurrency. Run:
 
-```
+
 ./ds.sh --help
-```
+
 
 to see usage details, which look like this:
 
@@ -117,36 +117,36 @@ OPTIONS:
 
 Basic: Just a Domains File (Serial)
 
-```
+
 ./ds.sh -d domains.txt
-```
+
 
 Reads domains.txt, enumerates them one by one.
 No TLD expansions occur since -t wasn’t specified.
 
 Parallel Mode
 
-```
+
 ./ds.sh -d domains.txt -m parallel -c 4
-```
+
 
 Still no TLD expansions if no -t file.
 Runs 4 processes in parallel.
 
 Domains + TLD Expansions
 
-```
+
 ./ds.sh -d domains.txt -t custom_tlds.txt
-```
+
 
 Serial (default) mode with expansions for each domain.
 If custom_tlds.txt is present and non-empty, the script enumerates each domain plus each domain + TLD combination.
 
 Specify a Different Output Directory
 
-```
+
 ./ds.sh -d domains.txt -o /home/user/dns_results
-```
+
 
 Saves all CSV files under /home/user/dns_results/YYYY-MM-DD/.
 
