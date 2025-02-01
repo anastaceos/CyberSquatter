@@ -83,7 +83,6 @@ The script supports command-line options to specify files, mode, and concurrency
 
 to see usage details, which look like this:
 
-```
 Usage: ./ds.sh [OPTIONS]
 
 OPTIONS:
@@ -98,7 +97,7 @@ OPTIONS:
   -c, --concurrency [number]    Number of parallel jobs (default: 2)
   
   -h, --help                    Show this help message and exit
-```  
+
     5.1 Required Options?
 
     At a minimum, you need a domains file with at least one domain in it. By default, the script will look for domains.txt. If your file has a different name, pass -d <filename>.
@@ -194,13 +193,13 @@ Saves all CSV files under /home/user/dns_results/YYYY-MM-DD/.
 
     Avoid “unrelated” TLDs or duplicates in tld.txt. The script systematically combines them with your root domain, which can clutter results.
 
-Interpretation
+    8.4 Interpretation
 
-A dnstwist CSV output showing an existing domain that’s suspiciously similar to yours could be a sign of phishing or typosquatting. Investigate further!
+    A dnstwist CSV output showing an existing domain that’s suspiciously similar to yours could be a sign of phishing or typosquatting. Investigate further!
 
-Combine with Other Tools
+    8.5 Combine with Other Tools
 
-You might feed this data into security tools or SIEM solutions to block suspicious domains or gather threat intelligence.
+    You might feed this data into security tools or SIEM solutions to block suspicious domains or gather threat intelligence.
 
 9. Troubleshooting
 
