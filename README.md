@@ -37,41 +37,39 @@ Make it Executable:
 
 ```
 chmod +x ds.sh
-
+```
 Place it anywhere on your system. You can run it from its current directory or put it in your $PATH (e.g., /usr/local/bin).
 
 4. Preparing Input Files
  
 The Domains File
 
-    Create a text file containing each target domain on a new line.
+Create a text file containing each target domain on a new line.
 
-    ```
-    example.com
-    example.net
-    company.org
-    ...
-    ```
+ ```
+example.com
+example.net
+company.org
+```
 
 You can name this file anything you want, specify it with -d <filename> when running the script.
 
 The TLD File (Optional)
 
-    If you want to expand each domain to additional TLDs, create a file listing TLDs you want tested. For example:
+If you want to expand each domain to additional TLDs, create a file listing TLDs you want tested. For example:
 
-    ```
-    net
-    org
-    io
-    co
-    ...
-    ```
+```
+net
+org
+io
+co
+```
 
-    For each base domain (e.g. example.com), the script creates a new CSV named <base_domain>.csv.
-    Runs dnstwist on the base domain, appending its findings to <base_domain>.csv.
-    If TLD mode is on, it enumerates expansions like example.org, example.io, etc., appending each expansion’s results to the same <base_domain>.csv.
+For each base domain (e.g. example.com), the script creates a new CSV named <base_domain>.csv.
+Runs dnstwist on the base domain, appending its findings to <base_domain>.csv.
+If TLD mode is on, it enumerates expansions like example.org, example.io, etc., appending each expansion’s results to the same <base_domain>.csv.
 
-    If you omit this file or leave it empty, no extra expansions are generated.
+If you omit this file or leave it empty, no extra expansions are generated.
 
 5. Script Usage
 
