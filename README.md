@@ -1,6 +1,6 @@
 # Domain Sentinel
-dnstwist phishing domain scanner and other tools alike are great at detect phishing, and fraudulent domains but can be tedious when trying to scan more than a single domain at a time.
-Domain Sentinel is a tool that automates domain enumeration with dnswist to detect typosquatting, phishing, and fraudulent sites with a simple shell script.
+dnstwist phishing domain scanner and other tools alike are great at detect phishing and fraudulent domains but can be tedious when trying to scan more than a single domain at a time.
+Domain Sentinel is a tool that automates domain enumeration with dnswist to detect phishing and fraudulent sites with a shell script utilising dnstwist.
 
 More info regarding dnstwist can be found here: https://github.com/elceef/dnstwist
 
@@ -152,8 +152,9 @@ Saves all CSV files under /home/user/dns_results/YYYY-MM-DD/.
 ### Generated CSV Files
 
 For each domain scanned by dnstwist, a CSV file is produced. For example, if you have example.com, you’ll see:
+```
 example.com.csv
-
+```
 Each CSV has columns typically including:
 
 Fuzzer: Name of the mutation type used by dnstwist (e.g., omission, repetition).
@@ -173,6 +174,8 @@ archived_results/2025-01-31/
 └── mycustomdomain.com.csv
 ```
 This ensures you can easily keep and revisit historical scans. If you run the script multiple times in one day, each run’s CSV files will go into the same daily folder (unless you rename the folder or run the script on different days).
+
+If TLD mode is on, it enumerates expansions like example.org, example.io, etc., appending each expansion’s results to the same <base_domain>.csv.
 
 ## 8. Tips & Best Practices
 
