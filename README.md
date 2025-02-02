@@ -1,5 +1,5 @@
 # Domain Sentinel
-dnstwist phishing domain scanner is a great tool to detect phishing, and fraudulent domains but can be tedious when trying to scan more than a single domain at a time.
+dnstwist phishing domain scanner and other tools alike are great tools to detect phishing, and fraudulent domains but can be tedious when trying to scan more than a single domain at a time.
 Domain Sentinel is a tool that automates domain enumeration with dnswist to detect typosquatting, phishing, and fraudulent sites with a simple shell script.
 
 More info regarding dnstwist can be found here: https://github.com/elceef/dnstwist
