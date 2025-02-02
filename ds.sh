@@ -36,9 +36,10 @@ usage() {
   echo "     \__ \/ _ \/ __ \/ __/ / __ \/ _ \/ /     "
   echo "    ___/ /  __/ / / / /_/ / / / /  __/ /      "
   echo "   /____/\___/_/ /_/\__/_/_/ /_/\___/_/       "                                          
-  echo ""
-  echo "A tool that automates domain enumeration with dnstwist"
-  echo "to detect phishing, typosquatting, and fraudulent domains."
+  echo 
+  echo "Commandline utility that automates domain enumeration with dnstwist."
+  echo "Used to detect phishing and fraudulent domains at scale and export to csv."
+  echo 
   echo "More information on dnstwist can be found at https://github.com/elceef/dnstwist"
   echo
   echo "Usage: $0 [OPTIONS]"
@@ -131,8 +132,9 @@ cat << "EOF"
     ___/ /  __/ / / / /_/ / / / /  __/ /      
    /____/\___/_/ /_/\__/_/_/ /_/\___/_/       
 
-A tool that automates domain enumeration
-with dnstwist to detect typosquatting, phishing, and fraudulent domains.
+Commandline utility that automates domain enumeration with dnstwist.
+Used to detect phishing and fraudulent domains at scale and export to csv.
+
 More information on dnstwist can be found at https://github.com/elceef/dnstwist
 
 EOF
