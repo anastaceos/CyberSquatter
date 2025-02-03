@@ -31,12 +31,12 @@ xargs (for parallel mode): Most Linux systems include xargs by default (part of 
 
 ## 3. Getting the script
 
-Save the script ds.sh (or any name you prefer).
+Save the script ts.sh (or any name you prefer).
 
 Make it Executable:
 
 ```
-chmod +x ds.sh
+chmod +x ts.sh
 ```
 Place it anywhere on your system. You can run it from its current directory or put it in your $PATH (e.g., /usr/local/bin).
 
@@ -46,7 +46,7 @@ Place it anywhere on your system. You can run it from its current directory or p
 
 Create a text file containing each target domain on a new line.
 
- ```
+```
 example.com
 example.net
 company.org
@@ -98,7 +98,7 @@ OPTIONS:
 ```
 ### Required Options?
 
-At a minimum, you need a domains file with at least one domain in it. By default, the script will look for domains.txt. If your file has a different name, pass -d <filename>.
+At a minimum, you need a domains file with at least one domain in it. If your file has a different name, pass -d <filename>.
 TLD file is optional; if present and non-empty, it will create domain expansions.
 
 ### Mode: Serial vs. Parallel

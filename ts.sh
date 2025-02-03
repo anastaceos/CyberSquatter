@@ -28,15 +28,15 @@ DEFAULT_CONCURRENCY=2
 
 usage() {
   echo ""
-  echo " ______       _     __ "               
-  echo "/_  __/    __(_)__ / /_"              
-  echo " / / | |/|/ / (_-</ __/"              
-  echo "/_/  |__,__/_/___/\__/  "             
-  echo "     ____               "            
-  echo "    / __/    _____ ___ ___  ___ ____ "
-  echo "   _\ \| |/|/ / -_) -_) _ \/ -_) __/ "
-  echo "  /___/|__,__/\__/\__/ .__/\__/_/    "
-  echo "                     /_/            "
+  echo "  ______       _     __               "               
+  echo " /_  __/    __(_)__ / /_              "              
+  echo "  / / | |/|/ / (_-</ __/              "               
+  echo " /_/  |__,__/_/___/\__/               "             
+  echo "      ____                            "            
+  echo "     / __/    _____ ___ ___  ___ ____ "
+  echo "    _\ \| |/|/ / -_) -_) _ \/ -_) __/ "
+  echo "   /___/|__,__/\__/\__/ .__/\__/_/    "
+  echo "                      /_/             "
   echo ""
   echo "Commandline utility that automates domain enumeration with dnstwist."
   echo "Used to detect phishing and fraudulent domains at scale and export to csv."
@@ -160,7 +160,17 @@ else
   echo "[>] Network connectivity is okay."
 fi
 
-# (2) dnstwist check
+# (2) DNS resolver check
+echo "[>] Checking DNS resolver..."
+if ! ping -c 4 dns.google &>/dev/null; then
+  echo "[!] Warning: Unable to ping DNS resolver. DNS might be down."
+  echo "[!] Continuing might lead to errors. Press Ctrl+C to abort, or wait 5s to continue."
+  sleep 5
+else
+  echo "[>] DNS Resolver is okay."
+fi
+
+# (3) dnstwist check
 echo "[>] Checking if dnstwist is installed..."
 if ! command -v dnstwist >/dev/null 2>&1; then
   echo "[!] Error: dnstwist not found. Please install it (e.g., 'sudo apt install dnstwist')."
@@ -168,7 +178,7 @@ if ! command -v dnstwist >/dev/null 2>&1; then
 fi
 echo "[>] dnstwist is installed."
 
-# (3) Validate domains file
+# (4) Validate domains file
 if [[ ! -f "$DOMAINS_FILE" ]]; then
   echo "[!] Error: Domains file '$DOMAINS_FILE' not found!"
   exit 1
@@ -178,7 +188,7 @@ if [[ ! -s "$DOMAINS_FILE" ]]; then
   exit 1
 fi
 
-# (4) Optional TLD file
+# (5) Optional TLD file
 TLD_MODE=false
 if [[ -n "$TLD_FILE" && -f "$TLD_FILE" && -s "$TLD_FILE" ]]; then
   TLD_MODE=true
