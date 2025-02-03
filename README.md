@@ -76,12 +76,12 @@ If you omit this file or leave it empty, no extra expansions are generated.
 The script supports command-line options to specify files, mode, and concurrency. Run:
 
 ```
-./ds.sh --help
+./ts.sh --help
 ```
 
 to see usage details, which look like this:
 ```
-Usage: ./ds.sh [OPTIONS]
+Usage: ./ts.sh [OPTIONS]
 
 OPTIONS:
   -d, --domains [file]          Path to domains file (REQUIRED)
@@ -115,7 +115,7 @@ Only matters if you use parallel mode. Determines how many domains are processed
 ### Basic: Just a Domains File (Serial)
 
 ```
-./ds.sh -d domains.txt
+./ts.sh -d domains.txt
 ```
 
 Reads domains.txt, enumerates them one by one.
@@ -124,7 +124,7 @@ No TLD expansions occur since -t wasn’t specified.
 ### Parallel Mode
 
 ```
-./ds.sh -d domains.txt -m parallel -c 4
+./ts.sh -d domains.txt -m parallel -c 4
 ```
 
 Still no TLD expansions if no -t file.
@@ -133,7 +133,7 @@ Runs 4 processes in parallel.
 ### Domains + TLD Expansions
 
 ```
-./ds.sh -d domains.txt -t custom_tlds.txt
+./ts.sh -d domains.txt -t custom_tlds.txt
 ```
 
 Serial (default) mode with expansions for each domain.
@@ -142,7 +142,7 @@ If custom_tlds.txt is present and non-empty, the script enumerates each domain p
 ### Specify a Different Output Directory
 
 ```
-./ds.sh -d domains.txt -o /home/user/dns_results
+./ts.sh -d domains.txt -o /home/user/dns_results
 ```
 
 Saves all CSV files under /home/user/dns_results/YYYY-MM-DD/.
@@ -162,7 +162,6 @@ Domain: The variant domain name tested.
 DNS A: IP addresses associated with that domain.
 DNS AAAA: IPv6 addresses.
 MX, NS, etc.: DNS records.
-Banner: Additional info if dnstwist does HTTP or SMTP checks.
 
 ### Archive Directory
 
