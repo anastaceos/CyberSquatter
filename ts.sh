@@ -221,7 +221,7 @@ enumerate_domain() {
 
   # 1) Enumerate the base domain
   echo "[+] Enumerating base domain: ${base_domain}"
-  dnstwist -r "${base_domain}" --format csv | sed 's/ *, */,/g' >> "${base_domain}.csv"
+  dnstwist -r -m -g "${base_domain}" --format csv | sed 's/ *, */,/g' >> "${base_domain}.csv"
 
   # 2) If TLD_MODE is on, enumerate expansions
   if $TLD_MODE; then
@@ -234,7 +234,7 @@ enumerate_domain() {
       # We skip enumerating if it's the same as the base domain
       if [[ "$expansion" != "$base_domain" ]]; then
         echo "[+] Enumerating expansion: ${expansion}"
-        dnstwist -r "${expansion}" --format csv | sed 's/ *, */,/g' >> "${base_domain}.csv"
+        dnstwist -r -m -g "${expansion}" --format csv | sed 's/ *, */,/g' >> "${base_domain}.csv"
       fi
     done
   fi
