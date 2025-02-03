@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Domain Sentinel: A tool that automates domain enumeration with dnstwist.
+# Twist Sweeper: A tool that automates domain enumeration with dnstwist.
 # Used to detect phishing and fraudulent domains.
 # By Anastaceos
 #
@@ -27,16 +27,17 @@ DEFAULT_CONCURRENCY=2
 ################################################################################
 
 usage() {
-  echo "     ____                        _            "  
-  echo "    / __ \____  ____ ___  ____ _(_)___        "
-  echo "   / / / / __ \/ __ \__ \/ __ \/ / __ \       "
-  echo "  / /_/ / /_/ / / / / / / /_/ / / / / /       "
-  echo " /_____/\____/_/ /_/ /_/\__,_/_/_/ /_/  __    "
-  echo "     / ___/___  ____  / /_(_)___  ___  / /    "
-  echo "     \__ \/ _ \/ __ \/ __/ / __ \/ _ \/ /     "
-  echo "    ___/ /  __/ / / / /_/ / / / /  __/ /      "
-  echo "   /____/\___/_/ /_/\__/_/_/ /_/\___/_/       "                                          
-  echo 
+  echo ""
+  echo " ______       _     __ "               
+  echo "/_  __/    __(_)__ / /_"              
+  echo " / / | |/|/ / (_-</ __/"              
+  echo "/_/  |__,__/_/___/\__/  "             
+  echo "     ____               "            
+  echo "    / __/    _____ ___ ___  ___ ____ "
+  echo "   _\ \| |/|/ / -_) -_) _ \/ -_) __/ "
+  echo "  /___/|__,__/\__/\__/ .__/\__/_/    "
+  echo "                     /_/            "
+  echo ""
   echo "Commandline utility that automates domain enumeration with dnstwist."
   echo "Used to detect phishing and fraudulent domains at scale and export to csv."
   echo 
@@ -122,15 +123,15 @@ fi
 
 cat << "EOF"
 
-     ____                        _             
-    / __ \____  ____ ___  ____ _(_)___        
-   / / / / __ \/ __ \__ \/ __ \/ / __ \       
-  / /_/ / /_/ / / / / / / /_/ / / / / /       
- /_____/\____/_/ /_/ /_/\__,_/_/_/ /_/  __    
-     / ___/___  ____  / /_(_)___  ___  / /    
-     \__ \/ _ \/ __ \/ __/ / __ \/ _ \/ /     
-    ___/ /  __/ / / / /_/ / / / /  __/ /      
-   /____/\___/_/ /_/\__/_/_/ /_/\___/_/       
+ ______       _     __               
+/_  __/    __(_)__ / /_              
+ / / | |/|/ / (_-</ __/              
+/_/  |__,__/_/___/\__/               
+      ____                           
+     / __/    _____ ___ ___  ___ ____
+    _\ \| |/|/ / -_) -_) _ \/ -_) __/
+   /___/|__,__/\__/\__/ .__/\__/_/   
+                     /_/                   
 
 Commandline utility that automates domain enumeration with dnstwist.
 Used to detect phishing and fraudulent domains at scale and export to csv.
