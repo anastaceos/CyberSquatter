@@ -1,16 +1,16 @@
-# Domain Sentinel
+# Twist Sweeper
 dnstwist phishing domain scanner and other tools alike are great at detect phishing and fraudulent domains but can be tedious when trying to scan more than a single domain at a time.
-Domain Sentinel is a tool that automates domain enumeration with dnswist to detect phishing and fraudulent sites with a shell script utilising dnstwist.
+Twist Sweeper is a tool that automates domain enumeration with dnswist to detect phishing and fraudulent sites with a shell script utilising dnstwist.
 
 More info regarding dnstwist can be found here: https://github.com/elceef/dnstwist
 
-Below is a step-by-step guide on how to use the Domain Sentinel tool (the Bash script) for detecting and enumerating phishing domains. This guide covers what it does, how to prepare, how to run, and how to interpret the results.
+Below is a step-by-step guide on how to use the Twist Sweeper tool (the Bash script) for detecting and enumerating phishing domains. This guide covers what it does, how to prepare, how to run, and how to interpret the results.
 
-# Domain Sentinel: A How-To Guide
+# Twist Sweeper: A How-To Guide
 
 ## 1. Overview
 
-Domain Sentinel is a bash script that leverages the dnstwist tool to:
+Twist Sweeper is a bash script that leverages the dnstwist tool to:
 
 - Take a list of target domains from a file.
 - Optionally create expanded domain permutations based on a list of TLDs (top-level domains).
@@ -217,7 +217,7 @@ If dnstwist fails or network issues arise, you might get empty CSV files or erro
 
 ## 10. Conclusion
 
-Domain Sentinel is a straightforward yet powerful script for discovering potential domain impersonations and typosquatters. By leveraging dnstwist, it scans each domain you provide, optionally expanding them with a TLD list. Depending on your needs, you can run it serially (safer for small domain sets) or in parallel (faster for large lists).
+Twist Sweeper is a straightforward yet powerful script for discovering potential domain impersonations and typosquatters. By leveraging dnstwist, it scans each domain you provide, optionally expanding them with a TLD list. Depending on your needs, you can run it serially (safer for small domain sets) or in parallel (faster for large lists).
 
 Once it’s finished, check the archived CSV files to see which permutations resolve, which IPs they map to, and whether they might represent a threat to your brand or users.
 
